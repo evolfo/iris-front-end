@@ -1,0 +1,148 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background: url('/img/stories-in-glass.jpg');
+
+  .main {
+    h6 {
+      color: #de8484;
+      font-size: 1.5rem;
+      width: 67%;
+      margin: 0 auto;
+      padding: 4rem;
+      text-align: justify;
+    }
+  }
+
+  .container {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+  button {
+    background: #de84844f;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  h5 {
+    color: #de8484;
+
+    span {
+      text-decoration: line-through;
+    }
+  }
+
+  h6 {
+    text-align: left;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    font-weight: 100;
+  }
+
+  .iris-info {
+    background: #000;
+    box-sizing: border-box;
+    position: relative;
+    min-width: 75%;
+    margin-bottom: 5rem;
+
+    .ella-img {
+      padding: 10rem;
+      background: url('/img/ella.jpg');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+header {
+  background: #000000e3;
+  background: linear-gradient(90deg, rgb(17, 20, 25) 0%, rgb(13, 20, 28) 100%);
+  padding: 1rem;
+
+  img {max-width: 10rem; opacity: 0.9;}
+}
+
+footer {
+  background: #000000e3;
+  background: -webkit-linear-gradient(left, rgb(17, 20, 25) 0%, rgb(13, 20, 28) 100%);
+  background: -o-linear-gradient(left, rgb(17, 20, 25) 0%, rgb(13, 20, 28) 100%);
+  background: linear-gradient(to right, rgb(17, 20, 25) 0%, rgb(13, 20, 28) 100%);
+  padding: 2rem;
+
+  .socials img {
+    max-width: 50px;
+    padding: .2rem;
+    opacity: 0.7;
+  }
+} 
+
+
+/* MODAL CSS */
+
+#alert-dialog-description {
+  color: white;
+  font-family: 'Roboto Condensed';
+  text-align: center;
+}
+
+.title {
+  h2 {
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  .button-qs button {
+    background: #de84844f;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 1rem;
+    border-radius: .5rem;
+  }
+
+  .button-qs button:hover {
+    cursor: pointer;
+  }
+}
