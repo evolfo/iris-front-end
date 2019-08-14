@@ -5,11 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
-import expansionReducer from './Redux/reducers'
+import thunk from 'redux-thunk'
+import expansionReducer from './Redux/reducers/reducers'
 
-const store = createStore(expansionReducer)
+import rootReducer from './Redux/reducers/rootReducer'
+
+const store = createStore(
+	rootReducer,
+	applyMiddleware(thunk)
+)
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -24,3 +30,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+export default store

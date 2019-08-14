@@ -53,7 +53,7 @@
   }
 
   h1, h2, h3, h4, h5, h6, p {
-    font-weight: 100;
+    font-weight: 400;
   }
 
   .iris-info {
@@ -117,6 +117,53 @@ footer {
 
 
 /* MODAL CSS */
+
+.modal-container, .almost-there {
+  text-align: center;
+
+  button {
+    color: #fff;
+    margin-top: 1.5rem;
+  }
+
+  input {
+    background: #cc797a24;
+    padding: 1rem;
+    color: white;
+  }
+
+  textarea {
+    color: white;
+    font-size: 1.4rem;
+  }
+
+  label {
+    color: white;
+  }
+
+  label.Mui-focused {
+    color: white;
+  }
+
+  .modal-button {
+    background: transparent;
+    border: 1px solid #ce7a7b;
+    padding: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: white;
+  }
+
+  /* Removing margin from Phone number modal flag icon */
+  .thanks-form button {
+    margin: 0;
+  }
+}
+
+div[role="dialog"] {
+  transition: 1s;
+}
 
 #alert-dialog-description {
   color: white;

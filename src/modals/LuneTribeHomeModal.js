@@ -33,21 +33,19 @@ const style = {
  }
 
 class LuneTribeHomeModal extends Component {
-
   handleButtonClick = (e) => {
 	this.props.fanLevel(e.target.id)
-	this.props.modalClose()
 	this.props.formModalOpen()
+	this.props.modalClose()
   }
   render () {
+
   	const { classes } = this.props
-
-  	console.log(this.props)
-
 	return (
+	  <React.Fragment>
 		<Dialog
-	      open={this.props.modalIsOpen}
-	      onClose={this.props.modalClose}
+	      open={this.props.mainReducer.modalIsOpen}
+	      onClose={this.props.mainReducer.modalClose}
 	      aria-labelledby="alert-dialog-title"
 	      aria-describedby="alert-dialog-description"
 	      className='modal-container'
@@ -67,19 +65,20 @@ class LuneTribeHomeModal extends Component {
 	        <DialogContentText id="alert-dialog-description">
 	        	<h2>How big of a fan of Iris Lune are you?</h2>
 	        </DialogContentText>
-	        <div class="button-qs">
+	        <div className="button-qs">
 		        <button onClick={this.handleButtonClick} id="low" style={style.button}>I'm a new listener</button>
 		        <button onClick={this.handleButtonClick} id="medium" style={style.button}>I've watched a few of her videos</button>
 		        <button onClick={this.handleButtonClick} id="high" style={style.button}>I love everything she does!</button>
 		    </div>
 	        <div style={style.buttonContainer}>
-	          <Button className="right-button" style={style.rightButton} onClick={this.props.modalClose} color="primary">
+	          <button className="modal-button right-button" style={style.rightButton} onClick={this.props.modalClose} color="primary">
 	            X
-	          </Button>
+	          </button>
 	        </div>
 	      </DialogContent>
-	      <LuneTribeHomeModalForm />
 	    </Dialog>
+	    <LuneTribeHomeModalForm />
+	  </React.Fragment>
 	)
   }
 }
