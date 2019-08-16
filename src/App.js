@@ -11,8 +11,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <LunetribeHome />
-      <
+      <Routes />
       <Footer />
     </div>
   );

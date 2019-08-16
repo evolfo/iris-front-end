@@ -47,7 +47,6 @@ class LuneTribeHomeModal extends Component {
   }
 
   handleTextInput = (e) => {
-  	console.log(e)
   	this.setState({
   	  phone: e
   	})

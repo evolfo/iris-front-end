@@ -33,6 +33,28 @@
     margin: 0 auto;
   }
 
+  .sp-container {
+    background: #de848417;
+    margin-bottom: 2rem;
+
+    .sp-content {
+      padding: 5rem;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    ul {
+      text-align: left;
+      list-style-type: square;
+    }
+
+    li {
+      font-size: 1.6rem;
+    }
+  }
+
   button {
     background: #de84844f;
     padding: 2rem;
