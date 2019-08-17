@@ -55,6 +55,28 @@
     }
   }
 
+  .main-form {
+    background: #0d131ca6;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+
+    .MuiInput-underline:before {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    input#country {
+      background: transparent;
+      position: absolute;
+      border: none;
+      font-size: 1rem;
+    }
+  }
+
+  .main-form label, input {
+    color: white;
+  }
+
   button {
     background: #de84844f;
     padding: 2rem;

@@ -93,7 +93,6 @@ export const createUser = user => {
    })
      .then(resp => resp.json())
      .then(userObj => {
-       console.log('creating user done', userObj)
        dispatch(creatingUser(userObj))
      })
      .catch(error => console.log(error))

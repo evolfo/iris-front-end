@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const Header = (props) => {
 	return (
 	  <header>
-        <img src="/img/logo.png" />
+        <img alt="logo" src="/img/logo.png" />
       </header>
 	)
 }

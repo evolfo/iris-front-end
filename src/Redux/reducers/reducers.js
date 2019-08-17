@@ -5,7 +5,7 @@ const initialState = {
   almostThereDisplayed: false,
   thankYouDisplayed: false,
   fanLvl: '',
-  user: {}
+  user: {user: {first_name: 'ang', phone: '+1 (510)847-9258', email: 'sup@sup.sup', zip_code: '12122'}}
 }
 
 export default function mainReducer(state = initialState, action) {
