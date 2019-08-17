@@ -6,13 +6,17 @@ import Header from './containers/Header'
 import Routes from './containers/Routes'
 import Footer from './containers/Footer'
 
+import { StripeProvider } from 'react-stripe-elements';
+
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Routes />
-      <Footer />
-    </div>
+  	<StripeProvider apiKey="pk_test_HhZdCVKoBWxT0ij7LTQggfyL0018D3iKp9">
+      <div className="App">
+        <Header />
+        <Routes />
+        <Footer />
+      </div>
+    </StripeProvider>
   );
 }
 

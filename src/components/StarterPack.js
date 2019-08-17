@@ -8,10 +8,18 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MuiPhoneNumber from 'material-ui-phone-number';
 import { CountryRegionData } from "react-country-region-selector";
 
+import { createPurchase, loadingStart, loadingEnd } from '../Redux/actions'
+
+import { CardElement, injectStripe, Elements } from 'react-stripe-elements';
+
 class StarterPack extends Component {
 
 	state = {
+		firstName: '',
 		lastName: '',
+		emailAddress: '',
+		phoneNumber: '',
+		zipCode: '',
 		address: '',
 		cityName: '',
 		province: '',
@@ -19,19 +27,50 @@ class StarterPack extends Component {
 	}
 
 	handleTextInput = (e) => {
-	  if (typeof(e.target.value === "object")) {
+	  if (e.target && typeof(e.target.value) === "object") {
 	  	this.setState({
 	  		country: e.target.value[0]
 	  	})
-	  } else {
+	  } else if (e.target) {
 	  	  this.setState({
 	  	    [e.target.id]: e.target.value
 	  	  })
-	  	}
+	  } else {
+	  	  this.setState({
+	  	  	phoneNumber: e
+	  	  })
+	  }
     }
 
+    handleSubmit = async (e) => {
+ 	  e.preventDefault()
+
+ 	  this.props.loadingStart()
+
+      const purchaseObj = {
+      	amount: 8,
+      	bundleName: 'starter pack',
+      	userId: 1
+      }
+
+      let {token} = await this.props.stripe.createToken({name: this.state.firstName});
+  	  let response = await fetch("http://localhost:3000/api/v1/charge", {
+    	method: "POST",
+    	headers: {"Content-Type": "text/plain"},
+    	body: JSON.stringify({
+	  	  	amount: 800,
+	  	  	stripeToken: token.id
+	  	})
+  	  })
+  	    .then(stripeObj => {
+  	    	this.props.createPurchase(purchaseObj)
+  	    	this.props.loadingEnd()
+  	    })
+
+	  if (response && response.ok) console.log("Purchase Complete!")
+	}
+
 	render() {
-		console.log(this.state.country)
 		return (
 			<React.Fragment>
 				<section className="App-header">
@@ -56,6 +95,7 @@ class StarterPack extends Component {
 			        </div>
 			        <form>
 			          <div className="container main-form">
+			            <h5>Shipping Info</h5>
 			            <TextField
 					      required
 					      id="firstName"
@@ -64,7 +104,7 @@ class StarterPack extends Component {
 					      label="First name"
 					      type="text"
 					      fullWidth
-					      value={this.props.mainReducer.user.user.first_name}
+					      value={this.state.firstName}
 					      onChange={this.handleTextInput}
 					    />
 			            <TextField
@@ -86,7 +126,7 @@ class StarterPack extends Component {
 					      label="Email Address"
 					      type="email"
 					      fullWidth
-					      value={this.props.mainReducer.user.user.email}
+					      value={this.state.email}
 					      onChange={this.handleTextInput}
 					    />
 					    <MuiPhoneNumber
@@ -97,7 +137,8 @@ class StarterPack extends Component {
 		                    fullWidth
 		                    margin="dense"
 		                    defaultCountry={"us"}
-		                    value={this.props.mainReducer.user.user.phone}
+		                    value={this.state.phone}
+		                    onChange={this.handleTextInput}
 	                  	/>
 						<TextField
 					      required
@@ -112,7 +153,7 @@ class StarterPack extends Component {
 					    />
 					    <TextField
 					      required
-					      id="city"
+					      id="cityName"
 					      autoFocus
 					      margin="dense"
 					      label="City"
@@ -129,7 +170,7 @@ class StarterPack extends Component {
 					      label="Zip Code"
 					      type="number"
 					      fullWidth
-					      value={this.props.mainReducer.user.user.zip_code}
+					      value={this.state.zipCode}
 					      onChange={this.handleTextInput}
 					    />
 					    <TextField
@@ -160,6 +201,11 @@ class StarterPack extends Component {
 					          </MenuItem>
 					        ))}
 					      </TextField>
+					    <h5>Billing Info</h5>
+					    <div class="card-element">
+					      <CardElement style={{base: {iconColor: '#c4f0ff', color: '#fff', padding: '1rem' }}} />
+					    </div>
+					    <button className="submit-button" onClick={this.handleSubmit} color="primary">Submit</button>
 			          </div>
 			        </form>
 			        <IrisInfo sp="from-starter-pack" />
@@ -173,4 +219,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps)(StarterPack)
+export default connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart })(injectStripe(StarterPack))

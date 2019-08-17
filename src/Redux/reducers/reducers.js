@@ -5,6 +5,7 @@ const initialState = {
   almostThereDisplayed: false,
   thankYouDisplayed: false,
   fanLvl: '',
+  loading: false,
   user: {user: {first_name: 'ang', phone: '+1 (510)847-9258', email: 'sup@sup.sup', zip_code: '12122'}}
 }
 
@@ -34,6 +35,10 @@ export default function mainReducer(state = initialState, action) {
      return {...state, fanLvl: action.payload}
    case 'CREATE_USER':
      return {...state, user: action.payload}
+   case 'LOAD_START':
+     return {...state, loading: true }
+   case 'LOAD_END':  
+     return {...state, loading: false }
    default: 
      return state
   }

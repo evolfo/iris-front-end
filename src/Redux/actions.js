@@ -54,6 +54,15 @@ const creatingUser = userObj => {
   return { type: 'CREATE_USER', payload: userObj }
 }
 
+// LOADING
+export const loadingStart = () => {
+  return { type: 'LOAD_START' }
+}
+
+export const loadingEnd = () => {
+  return { type: 'LOAD_END' }
+}
+
 // // SAVING MESSAGE
 // const savingMessage = message => {
 // 	return { type: 'SAVE_MESSAGE', payload: message }
@@ -113,6 +122,25 @@ export const addPhoneToUser = (userPhone, userId) => {
      .then(resp => resp.json())
      .then(userObj => {
        console.log('adding Phone done', userObj)
+     })
+     .catch(error => console.log(error))
+  }
+}
+
+// creating a purchase
+export const createPurchase = purchase => {
+  return dispatch => {
+	return fetch(baseURL + 'purchases', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({ amount: purchase.amount, bundle_name: purchase.bundleName, user_id: purchase.userId })
+   })
+     .then(resp => resp.json())
+     .then(userObj => {
+       console.log('purchase created!')
      })
      .catch(error => console.log(error))
   }
