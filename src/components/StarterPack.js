@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router"
 
 import IrisInfo from '../components/IrisInfo'
 
-import TextField from '@material-ui/core/TextField';
-import MenuItem from "@material-ui/core/MenuItem";
-import MuiPhoneNumber from 'material-ui-phone-number';
-import { CountryRegionData } from "react-country-region-selector";
+import TextField from '@material-ui/core/TextField'
+import MenuItem from "@material-ui/core/MenuItem"
+import MuiPhoneNumber from 'material-ui-phone-number'
+import { CountryRegionData } from "react-country-region-selector"
 
 import { createPurchase, loadingStart, loadingEnd } from '../Redux/actions'
 
-import { CardElement, injectStripe, Elements } from 'react-stripe-elements';
+import { CardElement, injectStripe, Elements } from 'react-stripe-elements'
 
 class StarterPack extends Component {
 
@@ -53,21 +54,25 @@ class StarterPack extends Component {
       	userId: 1
       }
 
-      let {token} = await this.props.stripe.createToken({name: this.state.firstName});
+      let {token} = await this.props.stripe.createToken({name: this.state.firstName})
+
   	  let response = await fetch("http://localhost:3000/api/v1/charge", {
     	method: "POST",
-    	headers: {"Content-Type": "text/plain"},
-    	body: JSON.stringify({
-	  	  	amount: 800,
-	  	  	stripeToken: token.id
-	  	})
+    	headers: {
+    		'Content-Type': 'application/json',
+    		"Accepts": "application/json"
+    	},
+    	body: JSON.stringify({ amount: (purchaseObj.amount * 100), stripeToken: token.id })
   	  })
   	    .then(stripeObj => {
   	    	this.props.createPurchase(purchaseObj)
   	    	this.props.loadingEnd()
   	    })
 
-	  if (response && response.ok) console.log("Purchase Complete!")
+	  if (response && response.ok) {
+	  	console.log("Purchase Complete!")
+	  	this.props.history.push(`/vip-offer`)
+	  }
 	}
 
 	render() {
@@ -202,7 +207,7 @@ class StarterPack extends Component {
 					        ))}
 					      </TextField>
 					    <h5>Billing Info</h5>
-					    <div class="card-element">
+					    <div className="card-element">
 					      <CardElement style={{base: {iconColor: '#c4f0ff', color: '#fff', padding: '1rem' }}} />
 					    </div>
 					    <button className="submit-button" onClick={this.handleSubmit} color="primary">Submit</button>
@@ -219,4 +224,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart })(injectStripe(StarterPack))
+export default withRouter(connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart })(injectStripe(StarterPack)))

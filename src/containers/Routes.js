@@ -1,11 +1,10 @@
 import React from 'react'
 import StarterPack from '../components/StarterPack'
 import LunetribeHome from './LunetribeHome'
-// import Browse from '../containers/Browse'
-// import Profile from '../containers/Profile'
-// import CampaignPage from '../components/browse/CampaignPage'
-// import CreateCampaignContainer from '../containers/CreateCampaignContainer'
-// import CampaignPage from './browse/CampaignPage'
+import VipOffer from './VipOffer'
+import SecondOffer from './SecondOffer'
+import ThankYou from './ThankYou'
+
 import { Route, Switch } from 'react-router-dom'
 
 import { Elements } from 'react-stripe-elements';
@@ -15,7 +14,12 @@ const Routes = props => {
     <Switch>
       <Route exact path='/' component={LunetribeHome} />
       <Elements>
-        <Route path='/starter-pack' component={StarterPack} />
+        <React.Fragment>
+          <Route path='/starter-pack' component={StarterPack} />
+          <Route path='/vip-offer' component={VipOffer} />
+          <Route path='/second-offer' component={SecondOffer} />
+          <Route path='/thank-you' component={ThankYou} />
+        </React.Fragment>
       </Elements>
     </Switch>
   )

@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .App-logo {
@@ -28,8 +32,13 @@
     }
   }
 
+  .col-6 {
+    flex: 50%;
+    margin: 1rem;
+  }
+
   .container {
-    max-width: 75%;
+    max-width: 60%;
     margin: 0 auto;
   }
 
@@ -39,10 +48,6 @@
 
     .sp-content {
       padding: 5rem;
-    }
-
-    img {
-      max-width: 100%;
     }
 
     ul {
@@ -117,7 +122,6 @@
     background: #000;
     box-sizing: border-box;
     position: relative;
-    min-width: 75%;
     margin-bottom: 5rem;
 
     .ella-img {
@@ -135,6 +139,37 @@
       margin-top: 0;
     }
   }
+
+  .bottom-button {
+    margin: 5rem;
+  }
+}
+
+#vip-offer {
+  
+  .flexing {
+    display: flex;
+  }
+
+  h1 > span {
+    color: #de8484;
+  }
+
+  p {font-size: 1.3rem; text-align: left;}
+  li {font-size: 1.4rem; text-align: left;}
+}
+
+#second-offer {
+  
+  .flexing {
+    display: flex;
+  }
+
+  h1 > span {
+    color: #de8484;
+  }
+
+  p {font-size: 1.3rem; text-align: left;}
 }
 
 .App-link {
@@ -248,5 +283,12 @@ div[role="dialog"] {
 
   .button-qs button:hover {
     cursor: pointer;
+  }
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1300px) {
+  .App-header .container {
+    max-width: 80%;
   }
 }
