@@ -2,11 +2,12 @@ const initialState = {
   modalIsOpen: false,
   formModalIsOpen: false,
   thanksModalOpen: false,
+  vipModalIsOpen: false,
   almostThereDisplayed: false,
   thankYouDisplayed: false,
   fanLvl: '',
   loading: false,
-  user: {user: {first_name: 'ang', phone: '+1 (510)847-9258', email: 'sup@sup.sup', zip_code: '12122'}}
+  user: {user: {id: 1, first_name: 'ang', phone: '+1 (510)847-9258', email: 'sup@sup.sup', zip_code: '12122'}}
 }
 
 export default function mainReducer(state = initialState, action) {
@@ -31,6 +32,10 @@ export default function mainReducer(state = initialState, action) {
      return {...state, thanksModalOpen: true}
    case 'THANKS_MODAL_CLOSE':
      return {...state, thanksModalOpen: false}
+   case 'VIP_MODAL_OPEN':
+     return {...state, vipModalIsOpen: true}
+   case 'VIP_MODAL_CLOSE':
+     return {...state, vipModalIsOpen: false}
    case 'FAN_INPUT':
      return {...state, fanLvl: action.payload}
    case 'CREATE_USER':

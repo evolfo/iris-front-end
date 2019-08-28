@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from "react-router"
 
 import IrisInfo from '../components/IrisInfo'
+import Loader from '../components/Loader'
 
 import TextField from '@material-ui/core/TextField'
 import MenuItem from "@material-ui/core/MenuItem"
@@ -11,7 +12,7 @@ import { CountryRegionData } from "react-country-region-selector"
 
 import { createPurchase, loadingStart, loadingEnd } from '../Redux/actions'
 
-import { CardElement, injectStripe, Elements } from 'react-stripe-elements'
+import { CardElement, injectStripe } from 'react-stripe-elements'
 
 class StarterPack extends Component {
 
@@ -43,36 +44,37 @@ class StarterPack extends Component {
 	  }
     }
 
-    handleSubmit = async (e) => {
+    handlePurchaseSubmit = async (e) => {
  	  e.preventDefault()
 
  	  this.props.loadingStart()
 
+ 	  // purchaseObj is being sent to my backend
       const purchaseObj = {
-      	amount: 8,
-      	bundleName: 'starter pack',
-      	userId: 1
+        amount: 8,
+        bundleName: 'starter pack',
+        userId: 1
       }
 
       let {token} = await this.props.stripe.createToken({name: this.state.firstName})
 
+      // this is Stripe's API, slightly different info is being sent
   	  let response = await fetch("http://localhost:3000/api/v1/charge", {
     	method: "POST",
     	headers: {
     		'Content-Type': 'application/json',
     		"Accepts": "application/json"
     	},
-    	body: JSON.stringify({ amount: (purchaseObj.amount * 100), stripeToken: token.id })
+    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: 'jelly@bean.com' })
   	  })
   	    .then(stripeObj => {
+  	    	console.log(stripeObj )
   	    	this.props.createPurchase(purchaseObj)
-  	    	this.props.loadingEnd()
   	    })
-
-	  if (response && response.ok) {
-	  	console.log("Purchase Complete!")
-	  	this.props.history.push(`/vip-offer`)
-	  }
+  	    .then(setTimeout(() => {
+  	    	this.props.loadingEnd()
+  	    	this.props.history.push(`/vip-offer`)
+  	    }, 1000 ))
 	}
 
 	render() {
@@ -135,6 +137,7 @@ class StarterPack extends Component {
 					      onChange={this.handleTextInput}
 					    />
 					    <MuiPhoneNumber
+					    	required
 		                    name="phone"
 		                    id="phoneNumber"
 		                    label="Phone Number"
@@ -210,7 +213,8 @@ class StarterPack extends Component {
 					    <div className="card-element">
 					      <CardElement style={{base: {iconColor: '#c4f0ff', color: '#fff', padding: '1rem' }}} />
 					    </div>
-					    <button className="submit-button" onClick={this.handleSubmit} color="primary">Submit</button>
+					    <button className="submit-button" onClick={this.handlePurchaseSubmit} color="primary">Submit</button>
+					    {this.props.mainReducer.loading ? <Loader /> : null}
 			          </div>
 			        </form>
 			        <IrisInfo sp="from-starter-pack" />

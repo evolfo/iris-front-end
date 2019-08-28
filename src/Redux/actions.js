@@ -42,6 +42,14 @@ export const thanksModalOpen = () => {
 export const thanksModalClose = () => {
   return { type: 'THANKS_MODAL_CLOSE' }
 }
+
+export const vipModalOpen = () => {
+  return { type: 'VIP_MODAL_OPEN' }
+}
+
+export const vipModalClose = () => {
+  return { type: 'VIP_MODAL_CLOSE' }
+}
 //END MODALS
 
 // fan level

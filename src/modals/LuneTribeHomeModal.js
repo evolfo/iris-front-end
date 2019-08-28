@@ -33,6 +33,7 @@ const style = {
 
 class LuneTribeHomeModal extends Component {
   handleButtonClick = (e) => {
+  	console.log(e.target.id)
 	this.props.fanLevel(e.target.id)
 	this.props.formModalOpen()
 	this.props.modalClose()

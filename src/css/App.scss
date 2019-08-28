@@ -21,6 +21,7 @@
   color: white;
   background: url('/img/stories-in-glass.jpg');
 
+
   .main {
     h6 {
       color: #de8484;
@@ -111,7 +112,7 @@
   }
 
   h6 {
-    text-align: left;
+    text-align: justify;
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -155,8 +156,8 @@
     color: #de8484;
   }
 
-  p {font-size: 1.3rem; text-align: justify; letter-spacing: .07rem;}
-  li {font-size: 1.4rem; text-align: left;}
+  p {font-size: 1.3rem; text-align: justify;}
+  li {font-size: 1.4rem; text-align: justify;}
 }
 
 #second-offer {
@@ -166,10 +167,10 @@
   }
 
   h1 > span {
-    color: #ebd45f;
+    color: #de8484;
   }
 
-  p {font-size: 1.3rem; text-align: justify; letter-spacing: .07rem;}
+  p {font-size: 1.3rem; text-align: justify;}
 }
 
 .App-link {

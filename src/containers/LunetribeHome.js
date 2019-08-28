@@ -37,7 +37,7 @@ class LunetribeHome extends Component {
 				<section className="App-header">
 			        <div className="container main">
 			          <h1>IRIS LUNE LUNETRIBE</h1>
-			          <h3>Get exclusive access to livestreams, Q&A's, merch giveaways, 
+			          <h3>Get exclusive access to livestreams, <br /> Q&A's, merch giveaways, 
 			          and special offers!</h3>
 			          <h5><span>$25</span> - FREE today</h5>
 			          <button onClick={this.props.modalOpen}>Join the Lunetribe</button>

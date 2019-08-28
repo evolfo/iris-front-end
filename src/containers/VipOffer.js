@@ -1,7 +1,46 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import { connect } from 'react-redux'
+
+import { createPurchase, loadingStart, loadingEnd, vipModalOpen } from '../Redux/actions'
+
+import { injectStripe } from 'react-stripe-elements'
+
+import VipModal from '../modals/VipModal'
+
 class VipOffer extends Component {
+
+	handlePurchaseSubmit = async (e) => {
+ 	  e.preventDefault()
+
+ 	  this.props.loadingStart()
+
+ 	  // purchaseObj is being sent to my backend
+      const purchaseObj = {
+        amount: 75,
+        bundleName: 'VIP OH SHIT',
+        userId: 1
+      }
+
+      // this is Stripe's API, slightly different info is being sent
+  	  let response = await fetch("http://localhost:3000/api/v1/charge", {
+    	method: "POST",
+    	headers: {
+    		'Content-Type': 'application/json',
+    		"Accepts": "application/json"
+    	},
+    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), email: 'jelly@bean.com' })
+  	  })
+  	    .then(stripeObj => {
+  	    	this.props.createPurchase(purchaseObj)
+  	    })
+  	    .then(setTimeout(() => {
+  	    	this.props.loadingEnd()
+  	    	this.props.history.push(`/thank-you`)
+  	    }, 1000 ))
+	}
+
 	render() {
 		return (
 		  <React.Fragment>
@@ -27,7 +66,7 @@ class VipOffer extends Component {
 				        <li><strong>Lunebag** </strong> ($25 value)</li>
 				        <li><strong>"Stories in Glass" Sticker </strong> ($2 value)</li>
 				      </ul>
-				      <button onClick={this.props.modalOpen}>Add for $75 and Confirm Order</button>
+				      <button onClick={this.props.vipModalOpen}>Yes! I Want the VIP Upgrade ($75)</button>
 				      <p>*Audio Polaroid 7" Record: a one-of-a-kind performance of me and my band playing one of our songs live. Each recording is done in a single take directly to vinyl in one of Brooklyn's top recording studios.</p>
 				      <p>**Lunebag: A collection of small items that inspire me. No two bags are the same; every bag is unique!</p>
 				    </div>
@@ -36,10 +75,15 @@ class VipOffer extends Component {
 				  <Link to="/second-offer"><button>No thanks, I don't need this now</button></Link>
 				</div>
 			  </div>
+			  <VipModal handlePurchaseSubmit={this.handlePurchaseSubmit} />
 			</section>
 		  </React.Fragment>
 		)
 	}
 }
 
-export default VipOffer
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart, vipModalOpen })(injectStripe(VipOffer))
