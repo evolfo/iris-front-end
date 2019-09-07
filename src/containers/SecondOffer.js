@@ -17,8 +17,8 @@ class SecondOffer extends Component {
  	  // purchaseObj is being sent to my backend
       const purchaseObj = {
         amount: 25,
-        bundleName: 'secondary, meh',
-        userId: 1
+        bundleName: 'secondary',
+        userId: this.props.mainReducer.user.user.id
       }
 
       // this is Stripe's API, slightly different info is being sent

@@ -19,8 +19,8 @@ class VipOffer extends Component {
  	  // purchaseObj is being sent to my backend
       const purchaseObj = {
         amount: 75,
-        bundleName: 'VIP OH SHIT',
-        userId: 1
+        bundleName: 'VIP',
+        userId: this.props.mainReducer.user.user.id
       }
 
       // this is Stripe's API, slightly different info is being sent

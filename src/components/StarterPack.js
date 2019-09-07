@@ -10,7 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { CountryRegionData } from "react-country-region-selector"
 
-import { createPurchase, loadingStart, loadingEnd } from '../Redux/actions'
+import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/actions'
 
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
@@ -53,7 +53,17 @@ class StarterPack extends Component {
       const purchaseObj = {
         amount: 8,
         bundleName: 'starter pack',
-        userId: 1
+        userId: this.props.mainReducer.user.user.id
+      }
+
+      // sending this to updateUser()
+      const userObj = {
+      	firstName: this.state.firstName,
+      	lastName: this.state.lastName,
+      	emailAddress: this.state.emailAddress,
+      	phoneNumber: this.state.phoneNumber,
+      	zipCode: this.state.zipCode,
+      	address: this.state.address + ", " + this.state.cityName + ", " + this.state.province + ", " + this.state.country
       }
 
       let {token} = await this.props.stripe.createToken({name: this.state.firstName})
@@ -68,16 +78,17 @@ class StarterPack extends Component {
     	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: 'jelly@bean.com' })
   	  })
   	    .then(stripeObj => {
-  	    	console.log(stripeObj )
-  	    	this.props.createPurchase(purchaseObj)
+  	    	this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
   	    })
   	    .then(setTimeout(() => {
+  	    	this.props.createPurchase(purchaseObj)
   	    	this.props.loadingEnd()
   	    	this.props.history.push(`/vip-offer`)
-  	    }, 1000 ))
+  	    }, 2000 ))
 	}
 
 	render() {
+		console.log(this.props.mainReducer)
 		return (
 			<React.Fragment>
 				<section className="App-header">
@@ -228,4 +239,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default withRouter(connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart })(injectStripe(StarterPack)))
+export default withRouter(connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart, updateUser })(injectStripe(StarterPack)))

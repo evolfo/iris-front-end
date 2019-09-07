@@ -120,7 +120,7 @@ export const createUser = user => {
 export const addPhoneToUser = (userPhone, userId) => {
   return dispatch => {
 	return fetch(baseURL + 'users/' + userId, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         "Accepts": "application/json"
@@ -133,6 +133,26 @@ export const addPhoneToUser = (userPhone, userId) => {
      })
      .catch(error => console.log(error))
   }
+}
+
+// updating user after starter pack bundle purchase
+export const updateUser = (userObj, userId) => {
+  return dispatch => {
+    return fetch(baseURL + 'users/' + userId, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({ first_name: userObj.firstName, last_name: userObj.lastName, email: userObj.emailAddress, phone: userObj.phoneNumber, 
+        billing_address: userObj.address, zip_code: userObj.zipCode })
+    })
+     .then(resp => resp.json())
+     .then(userObj => {
+       console.log('updating User done', userObj)
+     })
+     .catch(error => console.log(error))
+    }
 }
 
 // creating a purchase
