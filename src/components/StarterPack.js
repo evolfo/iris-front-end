@@ -70,7 +70,7 @@ class StarterPack extends Component {
 
       // this is Stripe's API, slightly different info is being sent
   	  // let response = await fetch("http://localhost:3000/api/v1/charge", {
-  	  let response = await fetch("http://67.205.164.245:6714/api/v1/charge", {
+  	  let response = await fetch("https://api.irislune.com/api/v1/charge", {
     	method: "POST",
     	headers: {
     		'Content-Type': 'application/json',
