@@ -248,9 +248,19 @@ footer {
     color: white;
   }
 
+  h4 {
+    line-height: 1.4rem;
+  }
+
   /* Removing margin from Phone number modal flag icon */
   .thanks-form button {
     margin: 0;
+  }
+}
+
+.almost-there {
+  h1, span {
+    color: #ff9bcf;
   }
 }
 

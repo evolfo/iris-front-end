@@ -9,6 +9,10 @@ import { injectStripe } from 'react-stripe-elements'
 
 class SecondOffer extends Component {
 
+  componentDidMount() {
+    window.scrollTo(0,0)
+  }
+
   handlePurchaseSubmit = async (e) => {
  	  e.preventDefault()
 

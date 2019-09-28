@@ -59,8 +59,8 @@ class LunetribeHome extends Component {
 			      <h5>Please Check Your E-Mail In A Few Minutes To Confirm Your Spot...</h5>
 			      <p>In the meantime, can I ask for a favor?</p>
 			      <p>I have a quick question for you so that I can better understand your specific situation and how I can serve you...</p>
-			      <p>Can you let me know - <strong>what's your #1 reason for wanting to join the Inner Circle?</strong></p>
-			      <p>How can I make it most exciting for you?<br /> (Please be as detailed and specific as possible.)</p>
+			      <p>Can you let me know - <strong><span>what's your #1 reason for wanting to join the Inner Circle?</span></strong></p>
+			      <p>How can I make it <span>most exciting for you?</span><br /> (Please be as detailed and specific as possible.)</p>
 			      <TextField
 			        required
 				    id="message"
@@ -89,9 +89,8 @@ class LunetribeHome extends Component {
 				<React.Fragment>
 			 	  <section className="App-header">
 				    <div className="container main almost-there">
-				      <h1>Thank You!</h1>
-				      <h5>I really appreciate you taking the time to tell me more. As a "thank you," I'd like to send you a special gift. :)
-					  Just click the button below to get started:</h5>
+				      <h1>You're the best!</h1>
+				      <h5>I really appreciate you taking the time to tell me more. As a "thank you", I'd like to send you a special gift. 🙂 Just click the button below to get started:</h5>
 				    </div>
 				    <div className="">
 				      <Link to='/starter-pack' onClick={this.props.thanksHide}>

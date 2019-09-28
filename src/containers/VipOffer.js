@@ -11,6 +11,10 @@ import VipModal from '../modals/VipModal'
 
 class VipOffer extends Component {
 
+	componentDidMount() {
+      window.scrollTo(0,0)
+  	}
+
 	handlePurchaseSubmit = async (e) => {
  	  e.preventDefault()
 

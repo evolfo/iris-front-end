@@ -16,6 +16,10 @@ import { CardElement, injectStripe } from 'react-stripe-elements'
 
 class StarterPack extends Component {
 
+	componentDidMount() {
+        window.scrollTo(0,0)
+  	}
+
 	state = {
 		firstName: '',
 		lastName: '',
@@ -30,7 +34,6 @@ class StarterPack extends Component {
 
 	handleTextInput = (e) => {
 	  if (e.target && typeof(e.target.value) === "object") {
-	  	console.log(e.target.value)
 	  	this.setState({
 	  		country: e.target.value[0]
 	  	})
@@ -90,7 +93,7 @@ class StarterPack extends Component {
 	}
 
 	render() {
-		console.log(this.props.mainReducer)
+		console.log(this.state.country)
 		return (
 			<React.Fragment>
 				<section className="App-header">
