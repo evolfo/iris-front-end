@@ -30,6 +30,7 @@ class StarterPack extends Component {
 
 	handleTextInput = (e) => {
 	  if (e.target && typeof(e.target.value) === "object") {
+	  	console.log(e.target.value)
 	  	this.setState({
 	  		country: e.target.value[0]
 	  	})
