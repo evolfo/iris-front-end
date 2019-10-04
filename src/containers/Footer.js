@@ -9,6 +9,7 @@ const Footer = (props) => {
             <a target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/artist/1IgffkHwmfiDbyYCFTKVsT?si=c6m1_1nTT92D0rKqr7vBsQ"><img alt="socials" src="/img/socials/spotify.png" /></a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/irislune"><img alt="socials" src="/img/socials/youtube.png" /></a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/iris_lune/"><img alt="socials" src="/img/socials/twitter.png" /></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.patreon.com/bePatron?u=4791695"><img alt="socials" src="/img/socials/patreon.png" /></a>
           </div>
       </footer>
 	)
