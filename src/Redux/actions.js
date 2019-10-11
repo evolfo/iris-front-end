@@ -63,6 +63,12 @@ const creatingUser = userObj => {
   return { type: 'CREATE_USER', payload: userObj }
 }
 
+// ADDING A PURCHASE
+const addPurchase = purchaseObj => {
+  console.log('actions', purchaseObj)
+  return { type: 'ADD_PURCHASE', payload: purchaseObj }
+}
+
 // LOADING
 export const loadingStart = () => {
   return { type: 'LOAD_START' }
@@ -168,7 +174,8 @@ export const createPurchase = purchase => {
       body: JSON.stringify({ amount: purchase.amount, bundle_name: purchase.bundleName, user_id: purchase.userId })
    })
      .then(resp => resp.json())
-     .then(userObj => {
+     .then(purchaseObj => {
+       addPurchase(purchaseObj)
        console.log('purchase created!')
      })
      .catch(error => console.log(error))

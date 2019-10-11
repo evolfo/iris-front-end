@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Loader = () => (
-	<div class="bubblingG">
+	<div className="bubblingG">
 		<span id="bubblingG_1">
 		</span>
 		<span id="bubblingG_2">
