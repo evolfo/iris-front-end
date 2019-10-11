@@ -7,7 +7,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
-import MuiPhoneNumber from 'material-ui-phone-number';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 import { connect } from 'react-redux'
 import { thanksModalOpen, thanksModalClose, addPhoneToUser, almostThereHide, thanksDisplay } from '../Redux/actions'
@@ -85,7 +86,8 @@ class LuneTribeHomeModal extends Component {
 		    </div>
 		    <form className="thanks-form">
         		<DialogContent>
-        		    <MuiPhoneNumber
+        		    <PhoneInput
+        		    	placeholder="Enter your phone number"
 	                    name="phone"
 	                    id="phone"
 	                    label="Phone Number"

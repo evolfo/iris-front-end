@@ -7,7 +7,8 @@ import Loader from '../components/Loader'
 
 import TextField from '@material-ui/core/TextField'
 import MenuItem from "@material-ui/core/MenuItem"
-import MuiPhoneNumber from 'material-ui-phone-number'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 import { CountryRegionData } from "react-country-region-selector"
 
 import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/actions'
@@ -152,8 +153,9 @@ class StarterPack extends Component {
 					      value={this.state.email}
 					      onChange={this.handleTextInput}
 					    />
-					    <MuiPhoneNumber
+					    <PhoneInput
 					    	required
+					    	placeholder="Enter your phone number"
 		                    name="phone"
 		                    id="phoneNumber"
 		                    label="Phone Number"
