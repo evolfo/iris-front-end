@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 class ThankYou extends Component {
   render() {
-    console.log(this.props.mainReducer)
   	return (
   	  <React.Fragment>
   	    <section id="thank-you" className="App-header">
@@ -17,8 +15,4 @@ class ThankYou extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state
-}
-
-export default connect(mapStateToProps)(ThankYou)
+export default ThankYou
