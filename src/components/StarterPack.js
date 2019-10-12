@@ -35,18 +35,20 @@ class StarterPack extends Component {
 	}
 
 	handleTextInput = (e) => {
-	  if (e.target && typeof(e.target.value) === "object") {
-	  	this.setState({
-	  		country: e.target.value[0]
-	  	})
-	  } else if (e.target) {
-	  	  this.setState({
-	  	    [e.target.id]: e.target.value
-	  	  })
-	  } else {
-	  	  this.setState({
-	  	  	phoneNumber: e
-	  	  })
+	  if (e) {
+		if (e.target && typeof(e.target.value) === "object") {
+			this.setState({
+				country: e.target.value[0]
+			})
+		} else if (e.target) {
+			this.setState({
+				[e.target.id]: e.target.value
+			})
+		} else {
+			this.setState({
+				phoneNumber: e
+			})
+		}
 	  }
     }
 
