@@ -33,7 +33,8 @@ const style = {
 class LuneTribeHomeModalForm extends Component {
 
   state = {
-  	firstName: '',
+	firstName: '',
+	lastName: '',
   	zipCode: '',
   	email: ''
   }
@@ -92,6 +93,17 @@ class LuneTribeHomeModalForm extends Component {
 					      type="text"
 					      fullWidth
 					      value={this.state.firstName}
+					      onChange={this.handleTextInput}
+					    />
+						<TextField
+					      required
+					      id="lastName"
+					      autoFocus
+					      margin="dense"
+					      label="Last name"
+					      type="text"
+					      fullWidth
+					      value={this.state.lastName}
 					      onChange={this.handleTextInput}
 					    />
 					    <TextField

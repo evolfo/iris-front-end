@@ -82,7 +82,7 @@ class LuneTribeHomeModal extends Component {
 	        </DialogContentText>
 	        <div className="button-qs">
 		        <h2>I really appreciate you taking the time to tell me more about your situation.</h2>
-		        <h4>(Optional) Lastly, I may wish to follow up with a few people personally on the phone so that I can better understand your situation. Would you be open to speaking on the phone for a few mins if we find a time that works for both of us? If so, would you please leave your number below? Thank you!</h4>
+						<h4>Lastly, I may wish to follow up with a few people personally on the phone so that I can better understand your situation. Would you be open to speaking on the phone for a few mins if we find a time that works for both of us? If so, would you please leave your number below? Thank you! (Optional) </h4>
 		    </div>
 		    <form className="thanks-form">
         		<DialogContent>

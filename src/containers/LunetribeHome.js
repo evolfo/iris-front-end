@@ -85,6 +85,7 @@ class LunetribeHome extends Component {
 			</React.Fragment>
 		  )
 		} else if (this.props.mainReducer.thankYouDisplayed) {
+			window.scrollTo(0, 0)
 			return (
 				<React.Fragment>
 			 	  <section className="App-header">

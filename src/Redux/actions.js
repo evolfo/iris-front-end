@@ -113,7 +113,7 @@ export const createUser = user => {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       },
-      body: JSON.stringify({ first_name: user.firstName, zip_code: user.zipCode, email: user.email, fan_level: user.fanLvl })
+      body: JSON.stringify({ first_name: user.firstName, last_name: user.lastName, zip_code: user.zipCode, email: user.email, fan_level: user.fanLvl })
    })
      .then(resp => resp.json())
      .then(userObj => {

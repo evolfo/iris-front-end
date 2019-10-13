@@ -7,9 +7,9 @@ const initialState = {
   thankYouDisplayed: false,
   fanLvl: '',
   loading: false,
-  // user: {user: {}},
-  purchases: [],
-  user: {user: {id: 1, first_name: 'ang', phone: '+1 (510)847-9258', email: 'sup@sup.sup', zip_code: '12122'}}
+  user: {user: {}},
+  purchases: []
+  // user: {user: {id: 1, first_name: 'ang', phone: '+1 (510)847-9258', email: 'sup@sup.sup', zip_code: '12122'}}
 }
 
 export default function mainReducer(state = initialState, action) {

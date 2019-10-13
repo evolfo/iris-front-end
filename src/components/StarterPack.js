@@ -7,7 +7,6 @@ import Loader from '../components/Loader'
 
 import TextField from '@material-ui/core/TextField'
 import MenuItem from "@material-ui/core/MenuItem"
-import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import { CountryRegionData } from "react-country-region-selector"
 
@@ -18,9 +17,9 @@ import { CardElement, injectStripe } from 'react-stripe-elements'
 class StarterPack extends Component {
 
 	componentDidMount() {
-        window.scrollTo(0,0)
-        document.querySelector('#country').type = ""
-  	}
+        
+		document.querySelector('#country').type = ""
+	}
 
 	state = {
 		firstName: '',
@@ -97,7 +96,7 @@ class StarterPack extends Component {
 	}
 
 	render() {
-		console.log(this.state.country)
+		window.scrollTo(0, 0)
 		return (
 			<React.Fragment>
 				<section className="App-header">
@@ -113,8 +112,9 @@ class StarterPack extends Component {
 			        	  <img src="/img/starter-pack.jpg" alt="Starter pack" />
 			        	  <ul>
 			        	    <li>Iris Lune Pop Socket ($15 value)</li>
+							<li>Signed Photo($12 value)</li>
 			        	    <li>​"Lost in Chatter" + "Self Titled" Lossless Audio + Hi Res Art ($15 value)</li>
-			        	    <li>​2x "Stories in Glass" Stickers ($4 value)</li>
+			        	    <li>​1x "Stories in Glass" Stickers ($2 value)</li>
 			        	    <li>​Iris Lune Matchbook ($2 value)</li>
 			        	    <li>​2x Iris Lune Guitar Picks ($4 value)</li>
 			        	  </ul>
@@ -163,9 +163,8 @@ class StarterPack extends Component {
 		                    id="phoneNumber"
 		                    label="Phone Number"
 		                    data-cy="user-phone"
-		                    fullWidth
-		                    margin="dense"
-		                    defaultCountry={"us"}
+		                    country="US"
+							className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-marginDense"
 		                    value={this.state.phone}
 		                    onChange={this.handleTextInput}
 	                  	/>
