@@ -9,7 +9,7 @@ class ThankYou extends Component {
   	    <section id="thank-you" className="App-header">
 		      <div className="container main">
 		        <h1>Thank you! Your Order Has Been Received</h1>
-		        <p>Thank you for your purchase, you can access your details below:</p>
+		        <p>Please check your email for info about what you've purchased.</p>
 		      </div>
 		    </section>
   	  </React.Fragment>

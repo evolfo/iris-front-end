@@ -17,7 +17,7 @@ import { CardElement, injectStripe } from 'react-stripe-elements'
 class StarterPack extends Component {
 
 	componentDidMount() {
-        
+		window.scrollTo(0, 0)
 		document.querySelector('#country').type = ""
 	}
 
@@ -96,7 +96,6 @@ class StarterPack extends Component {
 	}
 
 	render() {
-		window.scrollTo(0, 0)
 		return (
 			<React.Fragment>
 				<section className="App-header">
