@@ -14,6 +14,8 @@ import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/a
 
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
+const slack = require('slack-notify')('https://hooks.slack.com/services/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')
+
 class StarterPack extends Component {
 	
 	state = {
@@ -98,7 +100,18 @@ class StarterPack extends Component {
   	    	this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
   	    })
   	    .then(setTimeout(() => {
-  	    	this.props.createPurchase(purchaseObj)
+			this.props.createPurchase(purchaseObj)
+			slack.success({
+				text: 'Starter pack purchase',
+				fields: {
+					amount: purchaseObj.amount,
+					bundleName: purchaseObj.bundleName,
+					name: userObj.firstName + " " + userObj.lastName,
+					address: userObj.address,
+					zip: userObj.zipCode,
+					email: userObj.emailAddress
+				}
+			})
   	    	this.props.loadingEnd()
   	    	this.props.history.push(`/vip-offer`)
   	    }, 2000 ))

@@ -7,6 +7,8 @@ import { createPurchase, loadingStart, loadingEnd } from '../Redux/actions'
 
 import { injectStripe } from 'react-stripe-elements'
 
+const slack = require('slack-notify')('https://hooks.slack.com/services/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')
+
 class SecondOffer extends Component {
 
   componentDidMount() {
@@ -36,11 +38,20 @@ class SecondOffer extends Component {
     	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), email: 'jelly@bean.com' })
   	  })
   	    .then(stripeObj => {
-  	    	console.log(stripeObj )
   	    	this.props.createPurchase(purchaseObj)
   	    })
   	    .then(setTimeout(() => {
-  	    	this.props.loadingEnd()
+			this.props.loadingEnd()
+			slack.success({
+				text: 'Secondary offer purchase',
+				fields: {
+					amount: purchaseObj.amount,
+					bundleName: purchaseObj.bundleName,
+					name: this.props.mainReducer.user.user.first_name + " " + this.props.mainReducer.user.user.last_name,
+					zip: this.props.mainReducer.user.user.zip_code,
+					email: this.props.mainReducer.user.user.email
+				}
+			})  
   	    	this.props.history.push(`/thank-you`)
   	    }, 1000 ))
 	}
