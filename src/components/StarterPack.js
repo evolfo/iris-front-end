@@ -15,12 +15,7 @@ import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/a
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
 class StarterPack extends Component {
-
-	componentDidMount() {
-		window.scrollTo(0, 0)
-		document.querySelector('#country').type = ""
-	}
-
+	
 	state = {
 		firstName: '',
 		lastName: '',
@@ -30,7 +25,21 @@ class StarterPack extends Component {
 		address: '',
 		cityName: '',
 		province: '',
-		country: ''
+		country: '',
+		scrolled: false
+	}
+	
+	componentDidMount() {
+		document.querySelector('#country').type = ""
+	}
+
+	componentDidUpdate() {
+		if(!this.state.scrolled) {
+			window.scrollTo(0, 0);
+			this.setState({
+				scrolled: true
+			})
+		}
 	}
 
 	handleTextInput = (e) => {
