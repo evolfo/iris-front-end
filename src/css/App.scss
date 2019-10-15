@@ -1,3 +1,31 @@
+// Media breakpoints 
+ @mixin breakpoint($point) {
+   @if $point == desktop {
+     @media (max-width: 72em) { @content ; }
+  }
+   @else if $point == desktopMin {
+     @media (min-width: 72em) { @content ; }
+  }
+   @else if $point == big {
+     @media (max-width: 100em) { @content ; }
+  }
+   @else if $point == laptop {
+     @media (max-width: 60em) { @content ; }
+  }
+    @else if $point == laptopMin {
+     @media (min-width: 60em) { @content ; }
+  }
+    @else if $point == tablet {
+     @media (max-width: 50em) { @content ; }
+  }
+   @else if $point == phablet {
+     @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+     @media (max-width: 37.5em)  { @content ; }
+  }
+}
+
 .App {
   text-align: center;
 
@@ -21,7 +49,6 @@
   color: white;
   background: url('/img/stories-in-glass.jpg');
 
-
   .main {
     h6 {
       color: #de8484;
@@ -30,6 +57,13 @@
       margin: 0 auto;
       padding: 4rem;
       text-align: justify;
+
+      @include breakpoint(mobileonly) {
+        margin-top: 1rem;
+        width: 100% !important;
+        padding: 0;
+        font-size: .85rem;
+      }
     }
   }
 
@@ -112,7 +146,7 @@
   }
 
   h6 {
-    text-align: justify;
+    text-align: left;
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -129,11 +163,15 @@
       padding: 10rem;
       background: url('/img/ella.jpg');
       background-size: cover;
-      background-position: right;
+      background-position: center;
       width: 100%;
       top: 0;
       left: 0;
       box-sizing: border-box;
+
+      @include breakpoint(mobileonly) {
+        padding: 1.5rem;
+      }
     }
 
     h2 {
@@ -156,8 +194,8 @@
     color: #de8484;
   }
 
-  p {font-size: 1.3rem; text-align: justify;}
-  li {font-size: 1.4rem; text-align: justify;}
+  p {font-size: 1.3rem; text-align: justify; letter-spacing: .07rem;}
+  li {font-size: 1.4rem; text-align: left;}
 }
 
 #second-offer {
@@ -167,10 +205,10 @@
   }
 
   h1 > span {
-    color: #de8484;
+    color: #ebd45f;
   }
 
-  p {font-size: 1.3rem; text-align: justify;}
+  p {font-size: 1.3rem; text-align: justify; letter-spacing: .07rem;}
 }
 
 .App-link {
@@ -248,19 +286,9 @@ footer {
     color: white;
   }
 
-  h4 {
-    line-height: 1.4rem;
-  }
-
   /* Removing margin from Phone number modal flag icon */
   .thanks-form button {
     margin: 0;
-  }
-}
-
-.almost-there {
-  h1, span {
-    color: #ff9bcf;
   }
 }
 
@@ -301,5 +329,12 @@ div[role="dialog"] {
 @media (max-width: 1300px) {
   .App-header .container {
     max-width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .App-header .main h6 {
+    padding: 0;
+    width: 100%;
   }
 }

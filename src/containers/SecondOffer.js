@@ -7,7 +7,7 @@ import { createPurchase, loadingStart, loadingEnd } from '../Redux/actions'
 
 import { injectStripe } from 'react-stripe-elements'
 
-const slack = require('slack-notify')('https://hooks.slack.com/services/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')
+const slack = require('slack-notify')(process.env.SLACK_WEBHOOK_URL)
 
 class SecondOffer extends Component {
 
