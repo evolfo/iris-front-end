@@ -11,7 +11,7 @@ import { StripeProvider } from 'react-stripe-elements'
 
 function App() {
   return (
-    <StripeProvider apiKey={process.env.STRIPE_PUBLIC_KEY}>
+    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}>
       <div className="App">
         <Header />
         <Routes />

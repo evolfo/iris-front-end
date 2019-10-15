@@ -14,7 +14,7 @@ import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/a
 
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
-const slack = require('slack-notify')(process.env.SLACK_WEBHOOK_URL)
+const slack = require('slack-notify')(process.env.REACT_APP_SLACK_WEBHOOK_URL)
 
 class StarterPack extends Component {
 	
