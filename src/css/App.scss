@@ -32,6 +32,12 @@
   img {
     max-width: 100%;
   }
+
+  .card-element img {
+    width: 60%;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
 }
 
 .App-logo {
@@ -336,5 +342,25 @@ div[role="dialog"] {
   .App-header .main h6 {
     padding: 0;
     width: 100%;
+  }
+}
+
+#patreon {
+  background: linear-gradient(90deg, #111419 0%, #0d141c 100%);
+  text-decoration: none;
+  text-align: left;
+
+  a {
+    text-decoration: none;
+  }
+
+  .makeStyles-card-1 {
+    height: 100%;
+  }
+
+  .MuiCardActions-root {
+    position: absolute;
+    bottom: 0;
+    padding: 0;
   }
 }

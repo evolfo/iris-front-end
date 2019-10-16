@@ -4,6 +4,7 @@ import LunetribeHome from './LunetribeHome'
 import VipOffer from './VipOffer'
 import SecondOffer from './SecondOffer'
 import ThankYou from './ThankYou'
+import Patreon from '../components/Patreon'
 
 import { Route, Switch } from 'react-router-dom'
 
@@ -19,6 +20,7 @@ const Routes = props => {
           <Route path='/vip-offer' component={VipOffer} />
           <Route path='/second-offer' component={SecondOffer} />
           <Route path='/thank-you' component={ThankYou} />
+          <Route path='/inner-circle' component={Patreon} />
         </React.Fragment>
       </Elements>
     </Switch>

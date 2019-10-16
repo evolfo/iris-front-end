@@ -14,7 +14,8 @@ import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/a
 
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
-const slack = require('slack-notify')(process.env.REACT_APP_SLACK_WEBHOOK_URL)
+// const slack = require('slack-notify')(process.env.REACT_APP_SLACK_WEBHOOK_URL)
+const slack = require('slack-notify')('https://hooks.slack.com/services/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')
 
 class StarterPack extends Component {
 	
@@ -253,6 +254,7 @@ class StarterPack extends Component {
 					    <h5>Billing Info</h5>
 					    <div className="card-element">
 					      <CardElement style={{base: {iconColor: '#c4f0ff', color: '#fff', padding: '1rem' }}} />
+						  <img src="/img/stripe-payments.png" alt="Stripe payments"></img>
 					    </div>
 					    <button className="submit-button" onClick={this.handlePurchaseSubmit} color="primary">Submit</button>
 					    {this.props.mainReducer.loading ? <Loader /> : null}
