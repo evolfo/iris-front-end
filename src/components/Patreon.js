@@ -28,7 +28,8 @@ const Patreon = props => {
     const classes = useStyles();
     return (
       <Container id="patreon">
-        <Grid className={classes.container} container spacing={3}>
+        <Typography variant="h4">Come be a part of my creative journey!</Typography>
+        <Grid className={classes.container} container spacing={3}>  
           <Grid item xs={6} sm={4}>
             <Card className={classes.card}>
             <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961771" target="_blank">
