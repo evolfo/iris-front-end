@@ -64,7 +64,7 @@ const Patreon = props => {
             </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961774" target="_blank">
                 <CardActionArea>
@@ -98,7 +98,7 @@ const Patreon = props => {
               </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961778" target="_blank">
                 <CardActionArea>
@@ -134,7 +134,7 @@ const Patreon = props => {
               </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961782" target="_blank">
                 <CardActionArea>
@@ -169,7 +169,7 @@ const Patreon = props => {
               </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961797" target="_blank">
                 <CardActionArea>
@@ -205,7 +205,7 @@ const Patreon = props => {
               </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961809" target="_blank">
                 <CardActionArea>
@@ -239,7 +239,7 @@ const Patreon = props => {
               </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961819" target="_blank">
                 <CardActionArea>
@@ -271,7 +271,7 @@ const Patreon = props => {
               </a>
             </Card>
           </Grid>
-          <Grid item {12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <a href="https://www.patreon.com/join/irislunemusic/checkout?rid=3961828" target="_blank">
                 <CardActionArea>
