@@ -44,6 +44,7 @@ class LuneTribeHomeModal extends Component {
 	this.props.addPhoneToUser(this.state.phone, this.props.mainReducer.user.user.id)
 	this.props.almostThereHide()
 	this.props.thanksDisplay()
+	this.props.history.push('/starter-pack')
   }
 
   handleTextInput = (e) => {

@@ -88,7 +88,7 @@ class StarterPack extends Component {
       let {token} = await this.props.stripe.createToken({name: this.state.firstName})
 
       // this is Stripe's API, slightly different info is being sent
-  	  // let response = await fetch("http://localhost:3000/api/v1/charge", {
+  	//   let response = await fetch("http://localhost:3000/api/v1/charge", {
   	  let response = await fetch("https://api.irislune.com/api/v1/charge", {
     	method: "POST",
     	headers: {
