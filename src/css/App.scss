@@ -255,6 +255,20 @@ footer {
 
 /* MODAL CSS */
 
+.modal-container {
+  width: 50vw;
+  max-width: 50vw;
+  background: #020202fc;
+  margin-top: -3rem;
+  padding: 2rem;
+  padding-right: .5rem;
+  padding-left: .5rem;
+
+  div > div {
+    background: #000;
+  }
+}
+
 .modal-container, .almost-there {
   text-align: center;
 
@@ -342,6 +356,26 @@ div[role="dialog"] {
   .App-header .main h6 {
     padding: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-container {
+    max-width: 100vw;
+    width: 100vw;
+
+    div > div {
+      max-width: 100vw;
+      width: 100vw;
+    }
+  }
+
+  .button-qs {
+    #low, #medium, #high {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+    }
   }
 }
 

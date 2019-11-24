@@ -19,15 +19,6 @@ const style = {
   	},
   	action: {
   	  justifyContent: 'inherit'
-  	},
-  	paper: {
-  	  width: '50vw',
-  	  maxWidth: '50vw',
-  	  background: '#020202fc',
-  	  marginTop: '-3rem',
-  	  padding: '2rem',
-  	  paddingRight: '.5rem',
-  	  paddingLeft: '.5rem'
   	}
  }
 
@@ -54,11 +45,11 @@ class LuneTribeHomeModal extends Component {
 	      	  root: classes.backdrop
 	      	}
 	      }}
-	      PaperProps ={{
-	        classes: {
-	         root: classes.paper
-	        }
-	      }}
+	    //   PaperProps ={{
+	    //     classes: {
+	    //      root: classes.paper
+	    //     }
+	    //   }}
 	    >
 	      <DialogTitle id="alert-dialog-title"></DialogTitle>
 	      <DialogContent className="title">

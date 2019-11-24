@@ -38,7 +38,7 @@ class VipOffer extends Component {
     		'Content-Type': 'application/json',
     		"Accepts": "application/json"
     	},
-    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), email: 'jelly@bean.com' })
+    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), email: this.props.mainReducer.user.user.email })
   	  })
   	    .then(stripeObj => {
   	    	this.props.createPurchase(purchaseObj)

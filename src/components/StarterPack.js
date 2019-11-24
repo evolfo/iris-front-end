@@ -95,7 +95,7 @@ class StarterPack extends Component {
     		'Content-Type': 'application/json',
     		"Accepts": "application/json"
     	},
-    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: 'jelly@bean.com' })
+    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress })
   	  })
   	    .then(stripeObj => {
   	    	this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
