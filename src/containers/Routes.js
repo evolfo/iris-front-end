@@ -6,6 +6,8 @@ import SecondOffer from './SecondOffer'
 import ThankYou from './ThankYou'
 import Patreon from '../components/Patreon'
 import AlmostThere from '../components/AlmostThere'
+import SecretLune from '../components/SecretLune'
+import MusicStream from '../components/MusicStream'
 
 import { Route, Switch } from 'react-router-dom'
 
@@ -23,6 +25,8 @@ const Routes = props => {
           <Route path='/thank-you' component={ThankYou} />
           <Route path='/inner-circle' component={Patreon} />
           <Route path='/lean-its' component={AlmostThere} />
+          <Route path='/secret-lune' component={SecretLune} />
+          <Route path='/music-stream' component={MusicStream} />
         </React.Fragment>
       </Elements>
     </Switch>

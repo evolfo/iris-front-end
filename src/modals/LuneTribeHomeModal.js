@@ -15,7 +15,8 @@ import LuneTribeHomeModalForm from '../modals/LuneTribeHomeModalForm'
 
 const style = {
   	backdrop: {
-  	  backgroundColor: '#00000112'
+		backgroundColor: '#00000112',
+		margin: '0 auto'
   	},
   	action: {
   	  justifyContent: 'inherit'

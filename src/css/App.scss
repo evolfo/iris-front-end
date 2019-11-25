@@ -78,9 +78,15 @@
     margin: 1rem;
   }
 
+
   .container {
     max-width: 60%;
     margin: 0 auto;
+
+    .secret-button {
+      width: 60vw;
+      font-size: 2.3rem;
+    }
   }
 
   .sp-container {
@@ -259,6 +265,7 @@ footer {
   width: 50vw;
   max-width: 50vw;
   background: #020202fc;
+  margin: 0 auto;
   margin-top: -3rem;
   padding: 2rem;
   padding-right: .5rem;
@@ -290,6 +297,7 @@ footer {
 
   label {
     color: white;
+    z-index: 1;
   }
 
   label.Mui-focused {
@@ -335,7 +343,7 @@ div[role="dialog"] {
     color: white;
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 75%;
     margin-top: 1rem;
     border-radius: .5rem;
   }
@@ -353,20 +361,50 @@ div[role="dialog"] {
 }
 
 @media (max-width: 500px) {
-  .App-header .main h6 {
-    padding: 0;
-    width: 100%;
+  .App-header {
+    .main h6 {
+      padding: 0;
+      width: 100%;
+    }
+
+    .bottom-button {
+      margin: 1rem;
+    }
+
+    .sp-container { 
+      .sp-content {
+        padding: .5rem;
+      }
+      li {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .App {
+    .card-element {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  footer {
+    .socials {
+      img {
+        max-width: 40px;
+      }
+    }
   }
 }
 
 @media (max-width: 800px) {
   .modal-container {
-    max-width: 100vw;
-    width: 100vw;
+    max-width: 100%;
+    width: 100%;
 
     div > div {
-      max-width: 100vw;
-      width: 100vw;
+      box-sizing: border-box;
     }
   }
 
@@ -377,9 +415,15 @@ div[role="dialog"] {
       font-size: 1rem;
     }
   }
+
+  #vip-offer, #second-offer {
+    .flexing {
+      display: block;
+    }
+  }
 }
 
-#patreon {
+#patreon, #secret-lune {
   background: linear-gradient(90deg, #111419 0%, #0d141c 100%);
   text-decoration: none;
   text-align: left;
@@ -401,5 +445,24 @@ div[role="dialog"] {
   h4 {
     padding: 3rem;
     text-align: center;
+  }
+}
+
+#secret-lune {
+  p {
+    margin-bottom: 10px;
+  }
+
+  .secret-button {
+    background: #de84844f;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: .5rem;
   }
 }

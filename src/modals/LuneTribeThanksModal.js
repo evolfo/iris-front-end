@@ -21,15 +21,6 @@ const style = {
   	},
   	action: {
   	  justifyContent: 'inherit'
-  	},
-  	paper: {
-  	  width: '50vw',
-  	  maxWidth: '50vw',
-  	  background: '#020202fc',
-  	  marginTop: '-3rem',
-  	  padding: '2rem',
-  	  paddingRight: '.5rem',
-  	  paddingLeft: '.5rem'
   	}
  }
 
