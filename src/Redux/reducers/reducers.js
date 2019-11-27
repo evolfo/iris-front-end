@@ -15,7 +15,7 @@ const initialState = {
 export default function mainReducer(state = initialState, action) {
   switch(action.type) {
    case 'ADD_PURCHASE':
-     return {...state, purchases: [...state.purchases, action.payload]}
+     return {...state, purchases: this.state.purchases.push(action.payload)}
    case 'ALMOST_DISPLAY':
      return {...state, almostThereDisplayed: true}
    case 'ALMOST_HIDE':

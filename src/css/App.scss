@@ -396,6 +396,12 @@ div[role="dialog"] {
       }
     }
   }
+
+  #secret-lune {
+    .secret-button {
+      width: 100% !important;
+    }
+  }
 }
 
 @media (max-width: 800px) {

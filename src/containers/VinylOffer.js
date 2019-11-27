@@ -10,7 +10,7 @@ import { injectStripe } from 'react-stripe-elements'
 const slack = require('slack-notify')(process.env.REACT_APP_SLACK_WEBHOOK_URL)
 // const slack = require('slack-notify')('https://hooks.slack.com/services/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')
 
-class SecondOffer extends Component {
+class VinylOffer extends Component {
 
   componentDidMount() {
     window.scrollTo(0,0)
@@ -29,7 +29,7 @@ class SecondOffer extends Component {
       }
 
       // this is Stripe's API, slightly different info is being sent
-  	  // let response = await fetch("http://localhost:3000/api/v1/charge", {
+  	//   let response = await fetch("http://localhost:3000/api/v1/charge", {
       let response = await fetch("https://api.irislune.com/api/v1/charge", {
     	method: "POST",
     	headers: {
@@ -91,4 +91,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart })(injectStripe(SecondOffer))
+export default connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart })(injectStripe(VinylOffer))

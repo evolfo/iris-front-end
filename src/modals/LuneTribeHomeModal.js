@@ -46,11 +46,6 @@ class LuneTribeHomeModal extends Component {
 	      	  root: classes.backdrop
 	      	}
 	      }}
-	    //   PaperProps ={{
-	    //     classes: {
-	    //      root: classes.paper
-	    //     }
-	    //   }}
 	    >
 	      <DialogTitle id="alert-dialog-title"></DialogTitle>
 	      <DialogContent className="title">

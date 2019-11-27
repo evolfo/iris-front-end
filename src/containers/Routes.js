@@ -2,7 +2,7 @@ import React from 'react'
 import StarterPack from '../components/StarterPack'
 import LunetribeHome from './LunetribeHome'
 import VipOffer from './VipOffer'
-import SecondOffer from './SecondOffer'
+import VinylOffer from './VinylOffer'
 import ThankYou from './ThankYou'
 import Patreon from '../components/Patreon'
 import AlmostThere from '../components/AlmostThere'
@@ -21,7 +21,7 @@ const Routes = props => {
         <React.Fragment>
           <Route path='/starter-pack' component={StarterPack} />
           <Route path='/vip-offer' component={VipOffer} />
-          <Route path='/second-offer' component={SecondOffer} />
+          <Route path='/vinyl' component={VinylOffer} />
           <Route path='/thank-you' component={ThankYou} />
           <Route path='/inner-circle' component={Patreon} />
           <Route path='/lean-its' component={AlmostThere} />
