@@ -12,7 +12,7 @@ import { StripeProvider } from 'react-stripe-elements'
 function App() {
   return (
     // <StripeProvider apiKey="pk_test_HhZdCVKoBWxT0ij7LTQggfyL0018D3iKp9">
-    <StripeProvider apiKey="pk_live_Z2qNecBhHl7Jtd9qZgDqrsuC0006uHrfV9">
+     <StripeProvider apiKey="pk_live_Z2qNecBhHl7Jtd9qZgDqrsuC0006uHrfV9">
       <div className="App">
         <Header />
         <Routes />
