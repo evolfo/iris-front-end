@@ -26,22 +26,24 @@ class VipOffer extends Component {
  	  // purchaseObj is being sent to my backend
       const purchaseObj = {
         amount: 75,
-        bundleName: 'VIP',
+        bundleName: 'VIP bundle',
         userId: this.props.mainReducer.user.user.id
-      }
+	  }
+	  
+	  this.props.createPurchase(purchaseObj)
 
       // this is Stripe's API, slightly different info is being sent
-  	  // let response = await fetch("http://localhost:3000/api/v1/charge", {
+  	//   let response = await fetch("http://localhost:3000/api/v1/charge", {
   	  let response = await fetch("https://api.irislune.com/api/v1/charge", {
     	method: "POST",
     	headers: {
     		'Content-Type': 'application/json',
     		"Accepts": "application/json"
     	},
-    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), email: this.props.mainReducer.user.user.email })
+			  body: JSON.stringify({ user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), email: this.props.mainReducer.user.user.email, bundle_name: purchaseObj.bundleName })
   	  })
   	    .then(stripeObj => {
-  	    	this.props.createPurchase(purchaseObj)
+  	    	console.log("successful")
   	    })
   	    .then(setTimeout(() => {
 			this.props.loadingEnd()

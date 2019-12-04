@@ -71,7 +71,7 @@ class StarterPack extends Component {
  	  // purchaseObj is being sent to my backend
       const purchaseObj = {
         amount: 8,
-        bundleName: 'starter pack',
+        bundleName: 'starter pack bundle',
         userId: this.props.mainReducer.user.user.id
       }
 
@@ -85,6 +85,9 @@ class StarterPack extends Component {
       	address: this.state.address + ", " + this.state.cityName + ", " + this.state.province + ", " + this.state.country
       }
 
+	  this.props.createPurchase(purchaseObj)
+	  this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
+
       let {token} = await this.props.stripe.createToken({name: this.state.firstName})
 
       // this is Stripe's API, slightly different info is being sent
@@ -95,13 +98,9 @@ class StarterPack extends Component {
     		'Content-Type': 'application/json',
     		"Accepts": "application/json"
     	},
-    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress })
+    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress, bundle_name: purchaseObj.bundleName })
   	  })
-  	    .then(stripeObj => {
-  	    	this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
-  	    })
-  	    .then(setTimeout(() => {
-			this.props.createPurchase(purchaseObj)
+  	    .then(setTimeout(() => {		
 			slack.success({
 				text: 'Starter pack purchase',
 				fields: {
