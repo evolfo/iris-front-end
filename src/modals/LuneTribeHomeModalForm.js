@@ -20,8 +20,8 @@ const style = {
   	  justifyContent: 'inherit'
   	},
   	paper: {
-  	  width: '50vw',
-  	  maxWidth: '50vw',
+  	  width: '70vw',
+  	  maxWidth: '70vw',
   	  background: '#020202fc',
   	  marginTop: '-3rem',
   	  padding: '1rem',

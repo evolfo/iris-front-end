@@ -92,7 +92,7 @@ class VipOffer extends Component {
 				    </div>
 				</div>
 				<div className="bottom-button">
-				  <Link to="/second-offer"><button>No thanks, I don't need this now</button></Link>
+				  <Link to="/vinyl"><button>No thanks, I don't need this now</button></Link>
 				</div>
 			  </div>
 			  <VipModal handlePurchaseSubmit={this.handlePurchaseSubmit} />

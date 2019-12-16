@@ -29,7 +29,8 @@ class StarterPack extends Component {
 		cityName: '',
 		province: '',
 		country: '',
-		scrolled: false
+		scrolled: false,
+		errorMsg: ''
 	}
 	
 	componentDidMount() {
@@ -88,33 +89,50 @@ class StarterPack extends Component {
 	  this.props.createPurchase(purchaseObj)
 	  this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
 
+	  
       let {token} = await this.props.stripe.createToken({name: this.state.firstName})
 
-      // this is Stripe's API, slightly different info is being sent
-  	//   let response = await fetch("http://localhost:3000/api/v1/charge", {
-  	  let response = await fetch("https://api.irislune.com/api/v1/charge", {
-    	method: "POST",
-    	headers: {
-    		'Content-Type': 'application/json',
-    		"Accepts": "application/json"
-    	},
-    	body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress, bundle_name: purchaseObj.bundleName })
-  	  })
-  	    .then(setTimeout(() => {		
-			slack.success({
-				text: 'Starter pack purchase',
-				fields: {
-					amount: purchaseObj.amount,
-					bundleName: purchaseObj.bundleName,
-					name: userObj.firstName + " " + userObj.lastName,
-					address: userObj.address,
-					zip: userObj.zipCode,
-					email: userObj.emailAddress
-				}
-			})
-  	    	this.props.loadingEnd()
-  	    	this.props.history.push(`/vip-offer`)
-  	    }, 2000 ))
+	  if (token) {
+		// this is Stripe's API, slightly different info is being sent
+		//   let response = await fetch("http://localhost:3000/api/v1/charge", {
+		let response = await fetch("https://api.irislune.com/api/v1/charge", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json',
+				"Accepts": "application/json"
+			},
+			body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress, bundle_name: purchaseObj.bundleName })
+		})
+			.then(resp => {
+			if (resp.status === 200 || resp.status === 201 || resp.status === 202) {
+				setTimeout(() => {		
+				slack.success({
+					text: 'Starter pack purchase',
+					fields: {
+						amount: purchaseObj.amount,
+						bundleName: purchaseObj.bundleName,
+						name: userObj.firstName + " " + userObj.lastName,
+						address: userObj.address,
+						zip: userObj.zipCode,
+						email: userObj.emailAddress
+					}
+				})
+				this.props.loadingEnd()
+				this.props.history.push(`/vip-offer`)
+			}, 2000 )
+			} else {
+				this.props.loadingEnd()
+				this.setState({
+					errorMsg: "There was an error processing your payment, please try again."
+				})
+			}
+		  })
+		} else {
+		  this.props.loadingEnd()
+		  this.setState({
+			  errorMsg: "There was an error processing your payment, please try again."
+		  })
+		}
 	}
 
 	render() {
@@ -252,6 +270,7 @@ class StarterPack extends Component {
 					      </TextField>
 					    <h5>Billing Info</h5>
 					    <div className="card-element">
+						  <h6>{this.state.errorMsg}</h6>
 					      <CardElement style={{base: {iconColor: '#c4f0ff', color: '#fff', padding: '1rem' }}} />
 						  <img src="/img/stripe-payments.png" alt="Stripe payments"></img>
 					    </div>
