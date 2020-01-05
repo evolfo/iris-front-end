@@ -55,7 +55,7 @@ class VinylOffer extends Component {
 					email: this.props.mainReducer.user.user.email
 				}
 			})  
-  	    	this.props.history.push(`/thank-you`)
+  	    	this.props.history.push(`/thank-you#cd`)
   	    }, 1000 ))
 	}
 
@@ -80,7 +80,7 @@ class VinylOffer extends Component {
 			    </div>
 			</div>
 			<div className="bottom-button">
-			  <Link to="/thank-you"><button>No thanks, I don't need this now</button></Link>
+			  <Link to="/thank-you#starter-pack"><button>No thanks, I don't need this now</button></Link>
 			</div>
 		  </div>
 		</section>

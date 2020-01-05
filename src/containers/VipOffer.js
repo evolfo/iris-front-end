@@ -57,7 +57,7 @@ class VipOffer extends Component {
 					email: this.props.mainReducer.user.user.email
 				}
 			})    
-  	    	this.props.history.push(`/thank-you`)
+  	    	this.props.history.push(`/thank-you#vip`)
   	    }, 1000 ))
 	}
 
@@ -92,7 +92,7 @@ class VipOffer extends Component {
 				    </div>
 				</div>
 				<div className="bottom-button">
-				  <Link to="/vinyl"><button>No thanks, I don't need this now</button></Link>
+				  <Link to="/cd"><button>No thanks, I don't need this now</button></Link>
 				</div>
 			  </div>
 			  <VipModal handlePurchaseSubmit={this.handlePurchaseSubmit} />
