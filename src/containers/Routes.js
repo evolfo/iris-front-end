@@ -21,7 +21,7 @@ const Routes = props => {
         <React.Fragment>
           <Route path='/starter-pack' component={StarterPack} />
           <Route path='/vip-offer' component={VipOffer} />
-          <Route path='/vinyl' component={VinylOffer} />
+          <Route path='/cd' component={VinylOffer} />
           <Route path='/thank-you' component={ThankYou} />
           <Route path='/inner-circle' component={Patreon} />
           <Route path='/lean-its' component={AlmostThere} />
