@@ -19,6 +19,7 @@ const Routes = props => {
       <Route exact path='/' component={LunetribeHome} />
       <Elements>
         <React.Fragment>
+          <Route path='/home' component={LunetribeHome} />
           <Route path='/starter-pack' component={StarterPack} />
           <Route path='/vip-offer' component={VipOffer} />
           <Route path='/cd' component={VinylOffer} />
