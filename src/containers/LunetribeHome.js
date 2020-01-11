@@ -11,6 +11,10 @@ import { connect } from 'react-redux'
 import { modalOpen, modalClose, thanksModalOpen, thanksModalClose, almostThereDisplay, thanksHide } from '../Redux/actions'
 
 class LunetribeHome extends Component {
+	componentDidMount(){
+		this.props.history.push('/home')
+	}
+
 	handleAlmostThere = (e) => {
 		this.props.history.push('/lean-its')
 	}
