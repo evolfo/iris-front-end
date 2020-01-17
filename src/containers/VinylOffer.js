@@ -24,7 +24,7 @@ class VinylOffer extends Component {
  	  // purchaseObj is being sent to my backend
       const purchaseObj = {
         amount: 15,
-        bundleName: 'vinyl bundle',
+        bundleName: 'cd bundle',
         userId: this.props.mainReducer.user.user.id
 	  }
 	  
