@@ -30,7 +30,8 @@ class StarterPack extends Component {
 		province: '',
 		country: '',
 		scrolled: false,
-		errorMsg: ''
+		errorMsg: '',
+		submitButtonDisabled: false
 	}
 	
 	componentDidMount() {
@@ -66,7 +67,7 @@ class StarterPack extends Component {
 
     handlePurchaseSubmit = async (e) => {
  	  e.preventDefault()
-
+	  this.setState({ submitButtonDisabled: true })
  	  this.props.loadingStart()
 
  	  // purchaseObj is being sent to my backend
@@ -104,33 +105,35 @@ class StarterPack extends Component {
 			body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress, bundle_name: purchaseObj.bundleName })
 		})
 			.then(resp => {
-			if (resp.status === 200 || resp.status === 201 || resp.status === 202) {
-				setTimeout(() => {		
-				slack.success({
-					text: 'Starter pack purchase',
-					fields: {
-						amount: purchaseObj.amount,
-						bundleName: purchaseObj.bundleName,
-						name: userObj.firstName + " " + userObj.lastName,
-						address: userObj.address,
-						zip: userObj.zipCode,
-						email: userObj.emailAddress
-					}
-				})
-				this.props.loadingEnd()
-				this.props.history.push(`/vip-offer`)
-			}, 2000 )
-			} else {
-				this.props.loadingEnd()
-				this.setState({
-					errorMsg: "There was an error processing your payment, please try again."
-				})
-			}
+				if (resp.status === 200 || resp.status === 201 || resp.status === 202) {
+					setTimeout(() => {		
+					slack.success({
+						text: 'Starter pack purchase',
+						fields: {
+							amount: purchaseObj.amount,
+							bundleName: purchaseObj.bundleName,
+							name: userObj.firstName + " " + userObj.lastName,
+							address: userObj.address,
+							zip: userObj.zipCode,
+							email: userObj.emailAddress
+						}
+					})
+					this.props.loadingEnd()
+					this.props.history.push(`/vip-offer`)
+				}, 2000 )
+				} else {
+					this.props.loadingEnd()
+					this.setState({
+						errorMsg: "There was an error processing your payment, please try again.",
+						submitButtonDisabled: false
+					})
+				}
 		  })
 		} else {
 		  this.props.loadingEnd()
 		  this.setState({
-			  errorMsg: "There was an error processing your payment, please try again."
+			  errorMsg: "There was an error processing your payment, please try again.",
+			  submitButtonDisabled: false
 		  })
 		}
 	}
@@ -274,7 +277,7 @@ class StarterPack extends Component {
 					      <CardElement style={{base: {iconColor: '#c4f0ff', color: '#fff', padding: '1rem' }}} />
 						  <img src="/img/stripe-payments.png" alt="Stripe payments"></img>
 					    </div>
-					    <button className="submit-button" onClick={this.handlePurchaseSubmit} color="primary">Submit</button>
+					    <button className="submit-button" disabled={this.state.submitButtonDisabled ? 1 : 0} onClick={this.handlePurchaseSubmit} color="primary">Submit</button>
 					    {this.props.mainReducer.loading ? <Loader /> : null}
 			          </div>
 			        </form>

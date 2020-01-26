@@ -46,7 +46,7 @@ class VinylOffer extends Component {
   	    .then(setTimeout(() => {
 			this.props.loadingEnd()
 			slack.success({
-				text: 'Secondary offer purchase',
+				text: 'CD purchase',
 				fields: {
 					amount: purchaseObj.amount,
 					bundleName: purchaseObj.bundleName,
