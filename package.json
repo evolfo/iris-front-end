@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.3.1",
+    "@material-ui/core": "^4.9.5",
     "classnames": "^2.2.6",
-    "material-ui-phone-number": "^2.2.1",
-    "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-country-region-selector": "^1.4.3",
-    "react-dom": "^16.8.6",
-    "react-phone-number-input": "^2.3.24",
-    "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "react-stripe-elements": "^4.0.1",
+    "material-ui-phone-number": "^2.2.5",
+    "node-sass": "^4.13.1",
+    "react": "^16.13.0",
+    "react-country-region-selector": "^1.4.7",
+    "react-dom": "^16.13.0",
+    "react-phone-number-input": "^2.5.3",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-stripe-elements": "^4.0.2",
     "recompose": "^0.30.0",
-    "redux": "^4.0.4",
+    "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "slack-notify": "^0.1.7"
   },
@@ -39,6 +39,16 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-optional-chaining"
     ]
   }
 }

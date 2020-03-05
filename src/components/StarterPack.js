@@ -10,12 +10,14 @@ import MenuItem from "@material-ui/core/MenuItem"
 import PhoneInput from 'react-phone-number-input'
 import { CountryRegionData } from "react-country-region-selector"
 
-import { createPurchase, loadingStart, loadingEnd, updateUser } from '../Redux/actions'
+import { createPurchase, loadingStart, loadingEnd, createUser, updateUser } from '../Redux/actions'
 
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
 const slack = require('slack-notify')(process.env.REACT_APP_SLACK_WEBHOOK_URL)
 // const slack = require('slack-notify')('https://hooks.slack.com/services/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')
+const BUNDLE_NAME = 'starter pack bundle'
+const AMOUNT = 8
 
 class StarterPack extends Component {
 	
@@ -68,29 +70,49 @@ class StarterPack extends Component {
     handlePurchaseSubmit = async (e) => {
  	  e.preventDefault()
 	  this.setState({ submitButtonDisabled: true })
- 	  this.props.loadingStart()
+	  this.props.loadingStart()
+	   
+	  // sending this to updateUser()
+	  const userObj = {
+		firstName: this.state.firstName,
+		lastName: this.state.lastName,
+		emailAddress: this.state.emailAddress,
+		phoneNumber: this.state.phoneNumber,
+		zipCode: this.state.zipCode,
+		address: this.state.address + ", " + this.state.cityName + ", " + this.state.province + ", " + this.state.country
+	  }
 
- 	  // purchaseObj is being sent to my backend
-      const purchaseObj = {
-        amount: 8,
-        bundleName: 'starter pack bundle',
-        userId: this.props.mainReducer.user.user.id
-      }
+	  if(this?.props?.mainReducer?.user?.user?.id) {
+		// purchaseObj is being sent to my backend
+		const purchaseObj = {
+		  amount: AMOUNT,
+		  bundleName: BUNDLE_NAME,
+		  userId: this.props.mainReducer.user.user.id
+		}
 
-      // sending this to updateUser()
-      const userObj = {
-      	firstName: this.state.firstName,
-      	lastName: this.state.lastName,
-      	emailAddress: this.state.emailAddress,
-      	phoneNumber: this.state.phoneNumber,
-      	zipCode: this.state.zipCode,
-      	address: this.state.address + ", " + this.state.cityName + ", " + this.state.province + ", " + this.state.country
-      }
+		this.props.createPurchase(purchaseObj)
+		this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
+	  } else {
+		const createUserObj = {
+		  firstName: this.state.firstName, lastName: this.state.lastName, zipCode: this.state.zipCode, email: this.state.email, fanLvl: this.props.mainRefanLvl
+		}
 
-	  this.props.createPurchase(purchaseObj)
-	  this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
+		this.props.createUser(createUserObj)
+		  .then(() => {
+			const purchaseObj = {
+			  amount: AMOUNT,
+			  bundleName: BUNDLE_NAME,
+			  userId: this.props.mainReducer.user.user.id
+			}
 
-	  
+			this.props.createPurchase(purchaseObj)
+			this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
+		  })
+	  }
+
+	//   this.props.createPurchase(purchaseObj)
+	//   this.props.updateUser(userObj, this.props.mainReducer.user.user.id)
+
       let {token} = await this.props.stripe.createToken({name: this.state.firstName})
 
 	  if (token) {
@@ -102,7 +124,7 @@ class StarterPack extends Component {
 				'Content-Type': 'application/json',
 				"Accepts": "application/json"
 			},
-			body: JSON.stringify({user_id: purchaseObj.userId, amount: (purchaseObj.amount * 100), stripeToken: token.id, email: userObj.emailAddress, bundle_name: purchaseObj.bundleName })
+			body: JSON.stringify({ user_id: this.props.mainReducer.user.user.id, amount: (AMOUNT * 100), stripeToken: token.id, email: userObj.emailAddress, bundle_name: BUNDLE_NAME })
 		})
 			.then(resp => {
 				if (resp.status === 200 || resp.status === 201 || resp.status === 202) {
@@ -110,8 +132,8 @@ class StarterPack extends Component {
 					slack.success({
 						text: 'Starter pack purchase',
 						fields: {
-							amount: purchaseObj.amount,
-							bundleName: purchaseObj.bundleName,
+							amount: AMOUNT,
+							bundleName: BUNDLE_NAME,
 							name: userObj.firstName + " " + userObj.lastName,
 							address: userObj.address,
 							zip: userObj.zipCode,
@@ -292,4 +314,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default withRouter(connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart, updateUser })(injectStripe(StarterPack)))
+export default withRouter(connect(mapStateToProps, { createPurchase, loadingEnd, loadingStart, createUser, updateUser })(injectStripe(StarterPack)))

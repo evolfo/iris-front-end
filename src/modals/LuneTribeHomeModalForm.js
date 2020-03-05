@@ -47,8 +47,7 @@ class LuneTribeHomeModalForm extends Component {
 
   handleSubmit = (e) => {
   	e.preventDefault()
-
-  	const userObj = {...this.state, fanLvl: this.props.mainRefanLvl}
+  	const userObj = {...this.state, fanLvl: this.props.mainReducer.fanLvl}
 
   	this.props.createUser(userObj)
   		.then(this.props.formModalClose())
